@@ -1086,6 +1086,175 @@ p  { color: var(--gray-600); line-height: 1.75; }
 .mb-4 { margin-bottom: 2rem; }
 .hidden { display: none; }
 
+/* ---------- Trust Gap Section ---------- */
+.trust-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.trust-stat-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  transition: all var(--transition);
+}
+.trust-stat-card:hover {
+  background: rgba(255,255,255,.09);
+  border-color: rgba(255,255,255,.2);
+  transform: translateY(-4px);
+}
+.trust-stat-card--accent {
+  background: linear-gradient(135deg, rgba(26,86,219,.25), rgba(14,165,233,.2));
+  border-color: rgba(14,165,233,.35);
+}
+.trust-stat-card__num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--teal);
+  line-height: 1;
+  margin-bottom: .6rem;
+}
+.trust-stat-card--accent .trust-stat-card__num {
+  color: #ffffff;
+}
+.trust-stat-card__label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.35;
+  margin-bottom: .75rem;
+}
+.trust-stat-card__sub {
+  font-size: .85rem;
+  color: rgba(255,255,255,.6);
+  line-height: 1.65;
+}
+
+.trust-divider-statement {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.trust-divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+}
+.trust-divider-statement span {
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  white-space: nowrap;
+}
+
+.trust-reasons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+.trust-reason {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+.trust-reason:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.15);
+}
+.trust-reason__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(14,165,233,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--teal);
+}
+.trust-reason__icon svg { width: 18px; height: 18px; }
+.trust-reason h4 {
+  color: var(--white);
+  font-size: .95rem;
+  margin-bottom: .4rem;
+}
+.trust-reason p {
+  font-size: .85rem;
+  color: rgba(255,255,255,.55);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.trust-position {
+  background: linear-gradient(135deg, rgba(26,86,219,.2), rgba(14,165,233,.15));
+  border: 1px solid rgba(14,165,233,.3);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+}
+.trust-position__inner {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.trust-position__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(14,165,233,.3);
+}
+.trust-position__icon svg { width: 26px; height: 26px; }
+.trust-position__label {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: .4rem;
+}
+.trust-position__headline {
+  color: var(--white);
+  font-size: 1.4rem;
+  margin-bottom: .75rem;
+}
+.trust-position__text {
+  font-size: .92rem;
+  color: rgba(255,255,255,.7);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+.trust-position__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.trust-chip {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.85);
+  font-size: .78rem;
+  font-weight: 600;
+  padding: .3rem .85rem;
+  border-radius: 999px;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .grid-4, .partners-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1106,6 +1275,9 @@ p  { color: var(--gray-600); line-height: 1.75; }
   .form-row { grid-template-columns: 1fr; }
   .family-members { grid-template-columns: 1fr; }
   .trust-bar__inner { gap: 1rem; }
+  .trust-stats-row { grid-template-columns: 1fr; }
+  .trust-reasons { grid-template-columns: 1fr; }
+  .trust-position__inner { flex-direction: column; gap: 1.25rem; }
   .trust-divider { display: none; }
   .hero__actions { flex-direction: column; }
   .hero__actions .btn { text-align: center; justify-content: center; }
