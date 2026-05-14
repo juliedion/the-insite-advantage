@@ -225,19 +225,17 @@ p  { color: var(--gray-600); line-height: 1.75; }
 
 /* ---------- Hero ---------- */
 .hero {
-  background: linear-gradient(145deg, var(--navy) 0%, var(--navy-light) 50%, #0d3060 100%);
   position: relative;
   overflow: hidden;
-  min-height: 620px;
+  min-height: 640px;
   display: flex;
   flex-direction: column;
 }
 
-/* Full-bleed image: right half, desktop */
+/* Full-bleed image covering the entire hero module */
 .hero__bg-image {
   position: absolute;
-  top: 0; right: 0; bottom: 0;
-  width: 55%;
+  inset: 0;
   z-index: 0;
 }
 .hero__bg-image img {
@@ -247,19 +245,13 @@ p  { color: var(--gray-600); line-height: 1.75; }
   object-position: center top;
   display: block;
 }
-/* Gradient: navy on left fading to transparent on right */
+
+/* Subtle dark scrim for text legibility — not a gradient */
 .hero__bg-image::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    #0B2545 0%,
-    rgba(11,37,69,.95) 15%,
-    rgba(11,37,69,.7) 40%,
-    rgba(11,37,69,.2) 70%,
-    transparent 100%
-  );
+  background: rgba(11, 37, 69, 0.52);
 }
 
 .hero__container {
@@ -268,11 +260,14 @@ p  { color: var(--gray-600); line-height: 1.75; }
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .hero__content {
   padding: 5.5rem 0;
-  max-width: 580px;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
   position: relative;
   z-index: 1;
 }
@@ -294,27 +289,36 @@ p  { color: var(--gray-600); line-height: 1.75; }
 .hero h1 {
   color: var(--white);
   margin-bottom: 1.25rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
 }
 .hero h1 span { color: var(--teal); }
 .hero__sub {
-  color: rgba(255,255,255,.75);
+  color: rgba(255,255,255,.88);
   font-size: 1.15rem;
-  max-width: 520px;
-  margin-bottom: 2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
   line-height: 1.7;
+  text-shadow: 0 1px 6px rgba(0,0,0,.25);
 }
-.hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .hero__stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin-top: 3rem;
 }
 .hero__stat {
-  padding: 1.25rem 1.5rem;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.12);
+  padding: 1.25rem 1rem;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
   border-radius: var(--radius);
+  backdrop-filter: blur(6px);
+  text-align: center;
 }
 .hero__stat-num {
   font-family: var(--font-display);
@@ -325,9 +329,10 @@ p  { color: var(--gray-600); line-height: 1.75; }
   margin-bottom: .25rem;
 }
 .hero__stat-label {
-  font-size: .8rem;
-  color: rgba(255,255,255,.6);
+  font-size: .75rem;
+  color: rgba(255,255,255,.7);
   font-weight: 500;
+  line-height: 1.4;
 }
 .hero__card {
   background: rgba(255,255,255,.06);
@@ -1372,8 +1377,7 @@ p  { color: var(--gray-600); line-height: 1.75; }
   .nav__links.open { display: flex; }
   .nav__hamburger { display: flex; }
   .nav__inner { position: relative; }
-  .hero__grid, .about-hero__grid, .grid-2, .bio-grid, .reviews-layout, .contact-layout { grid-template-columns: 1fr; }
-  .hero__stats { grid-template-columns: repeat(2, 1fr); }
+  .about-hero__grid, .grid-2, .bio-grid, .reviews-layout, .contact-layout { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
   .grid-3, .testimonials-grid, .plans-grid, .all-services-grid { grid-template-columns: 1fr; }
   .grid-4, .partners-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1386,25 +1390,10 @@ p  { color: var(--gray-600); line-height: 1.75; }
   .trust-position__inner { flex-direction: column; gap: 1.25rem; }
   .jason-does-grid { grid-template-columns: 1fr; }
 
-  /* Mobile hero: stack image below content */
-  .hero { min-height: auto; flex-direction: column; }
-  .hero__bg-image {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    order: 2;
-  }
-  /* Mobile gradient: navy top fading to transparent bottom */
-  .hero__bg-image::after {
-    background: linear-gradient(
-      to bottom,
-      #0B2545 0%,
-      rgba(11,37,69,.5) 35%,
-      transparent 100%
-    );
-  }
-  .hero__container { order: 1; }
-  .hero__content { padding: 3.5rem 0 2rem; max-width: 100%; }
+  /* Mobile hero */
+  .hero { min-height: 560px; }
+  .hero__content { padding: 3.5rem 0; }
+  .hero__stats { grid-template-columns: repeat(2, 1fr); }
   .trust-divider { display: none; }
   .hero__actions { flex-direction: column; }
   .hero__actions .btn { text-align: center; justify-content: center; }
